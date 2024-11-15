@@ -1,0 +1,27 @@
+model_name: AdaptWin_bert #暂时只支持AdaptWin_bert
+# 可选数据集：twitter, restaurant, laptop
+dataset: twitter
+optimizer: adam
+initializer: xavier_uniform_
+lr: 0.00002  # BERT建议学习率可以是5e-5, 2e-5, 其他模型可尝试1e-3
+dropout: 0.1
+l2reg: 0.00001
+num_epoch: 30  # 非BERT模型建议增加epoch数量
+batch_size: 32  # BERT模型建议尝试16, 32, 64
+log_step: 10
+embed_dim: 300
+hidden_dim: 300
+bert_dim: 768
+pretrained_bert_name: bert-base-uncased
+max_seq_len: 100
+polarities_dim: 3
+patience: 5
+device: cuda:0  # 例如：cuda:0
+seed: 2123  # 设置随机种子以保证可复现性
+valset_ratio: 0  # 训练集与验证集的比例
+threshold: 10  
+early_stop: False  # Set to False to disable early stopping
+vae_epochs: 10
+vae_lr: 0.001
+latent_dim: 128  # Dimension of the VAE latent space
+beta: 0.5        # Weight for the KL divergence term
